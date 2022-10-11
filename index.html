@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+			integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="js/app.js" defer></script>
+		<title>Setup Hangman Game</title>
+	</head>
+	<body>
+		<div class="wrapper" id="wrapper">
+
+			<!-- HUD -->
+			<header class="hud" id="hud">
+				<div class="timer" id="timer"></div>
+				<div class="stop-game" id="stop-game">
+					<a href="#" class="stop-game-btn" id="stop-game-btn">
+						<i class="fa-solid fa-right-from-bracket"></i>
+					</a>
+				</div>
+			</header>
+
+			<main>
+				<!-- Game -->
+				<div class="game-container">
+					<!-- Hangman -->
+					<div class="figure-container">
+						<svg height="250" width="200">
+							<!-- Rod -->
+							<line x1="60" y1="20" x2="140" y2="20" />
+							<line x1="140" y1="20" x2="140" y2="50" />
+							<line x1="60" y1="20" x2="60" y2="230" />
+							<line x1="20" y1="230" x2="100" y2="230" />
+							<!-- Head -->
+							<circle cx="140" cy="70" r="20" class="figure-part" />
+							<!-- Body -->
+							<line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+							<!-- Arms -->
+							<line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
+							<line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+							<!-- Legs -->
+							<line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
+							<line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+						</svg>
+					</div>
+
+					<!-- Word to guess -->
+					<div class="hidden-word" id="hidden-word"></div>
+				</div>
+
+				<!-- Used letters -->
+				<aside class="wrong-letters-container">
+					<h2>Wrong Letters</h2>
+					<div class="wrong-letters" id="wrong-letters"></div>
+				</aside>
+
+				<!-- Notification Pop up -->
+				<div class="notification-container" id="notification-container">
+					<span class="notification-message" id="notification-message"></span>
+				</div>
+			</main>
+			<footer></footer>
+		</div>
+
+		<!-- Setup Modal -->
+		<div class="setup-menu__modal-container">
+			<div class="setup-menu__modal">
+				<h1>The Hangman Game</h1>
+				<form id="setup-menu__form">
+					<div class="form-control">
+						<label for="fc__language">Language</label>
+						<input list="languages" id="fc__language" autocomplete="off" />
+						<datalist class="fc__language" id="languages">
+							<option value="English" data-lang="en">
+							<option value="Deutsch" data-lang="de">
+							<option value="Italiana" data-lang="it">
+							<option value="Espagnol" data-lang="es">
+						</datalist>
+					</div>
+					<div class="form-control">
+						<label for="fc__word-length">Word Length (letters)</label>
+						<input
+							type="number"
+							class="fc__word-length"
+							id="fc__word-length"
+							autocomplete="off" />
+					</div>
+					<div class="form-control">
+						<label for="fc__timer">Timer (seconds)</label>
+						<input
+							type="number"
+							class="fc__timer"
+							id="fc__timer"
+							autocomplete="off" />
+					</div>
+					<div class="form-control">
+						<button class="btn setup-submit-btn" id="setup-submit-btn">
+							Start Game
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- End Game Modal -->
+		<div class="end-game__modal-container">
+			<div class="end-game-modal">
+				<h2 id="end-game-status"></h2>
+				<h2 id="end-game-word"></h2>
+				<button class="btn end-game-btn" id="end-game-btn">
+					Return To Menu
+				</button>
+			</div>
+		</div>
+	</body>
+</html>
