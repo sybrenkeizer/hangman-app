@@ -141,6 +141,15 @@ const endGame = (status) => {
   showBlur();
   endGameStatus.textContent = `You have ${status === 'lose' ? 'Lost' : 'Won'}`;
   endGameWord.textContent = `The hidden word was: ${selectedWord}`;
+  resetGame();
+}
+
+const resetGame = () => {
+  // wrongLettersEl.innerHTML = '';
+  // incorrectLetters = [];
+  // hideWrongLetterContainer();
+  // displayFigureParts();
+  
 }
 
 const showSetupMenu = () => {
@@ -192,5 +201,7 @@ submitBtn.addEventListener("click", (e) => {
 window.addEventListener('keydown', (e) => {
   if (gameIsActive) addLetter(e);
 });
+endGameBtn.addEventListener('click', () => window.location.reload());
 endGameBtn.addEventListener('click', showSetupMenu);
-stopGameBtn.addEventListener('click', stopGame);
+// stopGameBtn.addEventListener('click', stopGame);
+stopGameBtn.addEventListener('click', () => window.location.reload());
